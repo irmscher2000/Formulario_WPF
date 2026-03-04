@@ -5,8 +5,191 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Formulario_WPF"
         mc:Ignorable="d"
-        Title="Introducción de Datos de Empleados" Height="450" Width="800">
-    <Grid>
+        Title="Introducción de Datos de Empleados" Height="1024" Width="1024"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20">
+
+            <!-- Titulo -->
+            <TextBlock Text="Introducción de Datos de Empleados"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,10,0,20"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="400"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Nombre -->
+                <TextBlock Grid.Column="0" Grid.Row="0" 
+                           Text="Nombre*" 
+                           VerticalAlignment="Center"
+                           Margin="0,5,0,5"/>
+                <TextBox x:Name="txtNombre"
+                         Grid.Column="1" Grid.Row="0"
+                         Height="25" 
+                         Margin="0,5,0,5"/>
+
+                <!-- Apellidos -->
+                <TextBlock Grid.Column="0" Grid.Row="1" 
+                           Text="Apellidos" 
+                           VerticalAlignment="Center"
+                           Margin="0,5,0,5"/>
+                
+                <TextBox x:Name="txtApellido"
+                         Grid.Column="1" Grid.Row="1"
+                         Height="25" 
+                         Margin="0,5,0,5"/>
+
+                <!-- Email -->
+                <TextBlock Grid.Column="0" Grid.Row="2" 
+                           Text="E-mail*" 
+                           VerticalAlignment="Center"
+                           Margin="0,5,0,5"/>
+
+                <TextBox x:Name="txtEmail"
+                         Grid.Column="1" Grid.Row="2"
+                         Height="25" 
+                         Margin="0,5,0,5"/>
+
+                <!-- Telefono -->
+                <TextBlock Grid.Column="0" Grid.Row="3" 
+                           Text="Teléfono*" 
+                           VerticalAlignment="Center"
+                           Margin="0,5,0,5"/>
+
+                <TextBox x:Name="txtTelefono"
+                         Grid.Column="1" Grid.Row="3"
+                         Width="180" Height="25" 
+                         HorizontalAlignment="Left"
+                         Margin="0,5,0,5"/>
+
+                <!-- Fecha de nacimiento -->
+                <TextBlock Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"
+                           Text="Fecha de nacimiento" 
+                           VerticalAlignment="Center"
+                           Margin="0,5,10,5"/>
+
+                <DatePicker x:Name="dpFechaNacimiento"
+                         Grid.Column="1" Grid.Row="4"
+                         Width="330" Height="30" 
+                         HorizontalAlignment="Right"
+                         Margin="0,5,0,5"/>
+
+                <!-- DNI -->
+                <StackPanel Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="DNI" 
+                               VerticalAlignment="Center"/>
+
+                    <TextBox x:Name="txtDNI"
+                             Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2"
+                             Width="300" Height="25" 
+                             Margin="10,0,0,0"/>
+
+                </StackPanel>
+                
+                <!-- Boton para cargar Fotografia -->
+                <TextBlock Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"
+                           Text="Adjuntar fotografía"
+                           Width="110"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="0,12,10,5"/>
+
+                <StackPanel Grid.Column="1" Grid.Row="6"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Height="100"
+                            Margin="0,5,0,10">
+
+                    <Button x:Name="btnCargarFoto"
+                            Content="Cargar Foto"
+                            Width="150" Height="45"
+                            Margin="0,0,140,0"/>
+                    <!--  Click="btnCargarFoto_Click" -->
+
+                </StackPanel>
+
+                <!-- Domicilio -->
+                <TextBlock Grid.Column="0" Grid.Row="7"
+                           Text="Domicilio" 
+                           Margin="0,10,10,5"
+                           VerticalAlignment="Top"/>
+
+                <Grid Grid.Column="1" Grid.Row="7" Margin="0,5,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/> 
+                        <RowDefinition Height="Auto"/> 
+                        <RowDefinition Height="Auto"/> 
+                        <RowDefinition Height="Auto"/> 
+                        <RowDefinition Height="Auto"/> 
+                    </Grid.RowDefinitions>
+
+                    <TextBox x:Name="txtDireccion"
+                             Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                             Height="25" 
+                             Margin="15,2,0,0"
+                             Text="Dirección"/>
+
+                    <TextBox x:Name="txtCiudad"
+                             Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                             Height="25" 
+                             Margin="15,2,0,0"
+                             Text="Ciudad"/>
+
+                    <TextBox x:Name="txtProvincia"
+                             Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+                             Height="25" 
+                             Margin="15,2,0,0"
+                             Text="Provincia"/>
+
+                    <TextBox x:Name="txtCodigoPostal"
+                             Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
+                             Height="25" 
+                             Margin="15,2,0,0"
+                             Text="Código Postal"/>
+
+                    <TextBox x:Name="txtPais"
+                             Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
+                             Height="25" 
+                             Margin="15,2,0,0"
+                             Text="País"/>
+
+
+                </Grid>
+
+
+
+            </Grid>
+
+        </StackPanel>
+
         
-    </Grid>
+        
+        
+    </ScrollViewer>
 </Window>
