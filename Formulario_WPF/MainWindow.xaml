@@ -22,6 +22,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="60"/>
                     <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -36,8 +37,9 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                
+
                 <!-- Nombre -->
                 <TextBlock Grid.Column="0" Grid.Row="0" 
                            Text="Nombre*" 
@@ -50,10 +52,10 @@
 
                 <!-- Apellidos -->
                 <TextBlock Grid.Column="0" Grid.Row="1" 
-                           Text="Apellidos" 
+                           Text="Apellidos*" 
                            VerticalAlignment="Center"
                            Margin="0,5,0,5"/>
-                
+
                 <TextBox x:Name="txtApellido"
                          Grid.Column="1" Grid.Row="1"
                          Height="25" 
@@ -107,7 +109,7 @@
                              Margin="10,0,0,0"/>
 
                 </StackPanel>
-                
+
                 <!-- Boton para cargar Fotografia -->
                 <TextBlock Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"
                            Text="Adjuntar fotografía"
@@ -125,8 +127,21 @@
                     <Button x:Name="btnCargarFoto"
                             Content="Cargar Foto"
                             Width="150" Height="45"
-                            Margin="0,0,140,0"/>
-                    <!--  Click="btnCargarFoto_Click" -->
+                            Margin="0,0,140,0"
+                            Click="btnCargarFoto_Click"/>
+
+                </StackPanel>
+
+                <!-- Imagen para cargar la foto -->
+                <StackPanel Grid.Column="2" Grid.Row="6"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="0,5,0,10">
+
+                    <Image x:Name="imgFoto"
+                           Width="150"
+                           Height="150"
+                           Stretch="Uniform"/>
 
                 </StackPanel>
 
@@ -139,57 +154,163 @@
                 <Grid Grid.Column="1" Grid.Row="7" Margin="0,5,0,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="10"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/> 
-                        <RowDefinition Height="Auto"/> 
-                        <RowDefinition Height="Auto"/> 
-                        <RowDefinition Height="Auto"/> 
-                        <RowDefinition Height="Auto"/> 
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <TextBox x:Name="txtDireccion"
                              Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
                              Height="25" 
                              Margin="15,2,0,0"
-                             Text="Dirección"/>
+                             Text="Dirección"
+                             GotFocus="Txt_GotFocus"
+                             LostFocus="Txt_LostFocus"/>
 
                     <TextBox x:Name="txtCiudad"
                              Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
                              Height="25" 
                              Margin="15,2,0,0"
-                             Text="Ciudad"/>
+                             Text="Ciudad"
+                             GotFocus="Txt_GotFocus"
+                             LostFocus="Txt_LostFocus"/>
 
                     <TextBox x:Name="txtProvincia"
                              Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
                              Height="25" 
                              Margin="15,2,0,0"
-                             Text="Provincia"/>
+                             Text="Provincia"
+                             GotFocus="Txt_GotFocus"
+                             LostFocus="Txt_LostFocus"/>
 
                     <TextBox x:Name="txtCodigoPostal"
                              Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
                              Height="25" 
                              Margin="15,2,0,0"
-                             Text="Código Postal"/>
+                             Text="Código Postal"
+                             GotFocus="Txt_GotFocus"
+                             LostFocus="Txt_LostFocus"/>
 
                     <TextBox x:Name="txtPais"
-                             Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
+                             Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"
                              Height="25" 
                              Margin="15,2,0,0"
-                             Text="País"/>
-
+                             Text="País"
+                             GotFocus="Txt_GotFocus"
+                             LostFocus="Txt_LostFocus"/>
 
                 </Grid>
 
+                <!-- Imagen con el logo del instituto -->
+                <StackPanel Grid.Column="2" Grid.Row="7"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
 
+                    <Image Source="/Images/logo.png"
+                           Width="200"
+                           Margin="150,0,0,20"
+                           Stretch="Uniform"/>
+                </StackPanel>
 
+                <!-- Enlace a la red social -->
+                <TextBlock Grid.Column="0" Grid.Row="8"
+                           Grid.ColumnSpan="2"
+                           Text="Enlace a red social"
+                           VerticalAlignment="Center"
+                           Margin="0,20,10,5"/>
+
+                <TextBox Grid.Column="1" Grid.Row="8"  
+                         Grid.ColumnSpan="2"
+                         x:Name="txtRedSocial"
+                         Height="25"
+                         Margin="50,20,0,5"/>
+
+                <!-- Rol actual -->
+                <TextBlock Grid.Column="0" Grid.Row="9"
+                           Text="Rol actual"
+                           VerticalAlignment="Center"
+                           Margin="0,10,10,5"/>
+                <ComboBox Grid.Column="1" Grid.Row="9"
+                          x:Name="cbRol"
+                          Width="350"
+                          Height="25"
+                          Margin="50,10,0,5">
+
+                    <ComboBoxItem Content="Desarrollador"/>
+                    <ComboBoxItem Content="Analista"/>
+                    <ComboBoxItem Content="Diseñador"/>
+                    <ComboBoxItem Content="Administrador"/>
+
+                </ComboBox>
+
+                <!-- Descripcion del puesto actual -->
+                <TextBlock Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="2"
+                           Text="Descripción del puesto de trabajo actual:"
+                           VerticalAlignment="Top"
+                           Margin="0,10,0,10"/>
+
+                <TextBox Grid.Column="0" Grid.Row="11" Grid.ColumnSpan="3"
+                         x:Name="txtDescripcion"
+                         Height="100"
+                         AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Auto"/>
+
+                <!-- Botones para guardar o cancelar -->
+                <StackPanel Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="3"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="0,20,0,0">
+
+                    <Button x:Name="btnGuradar"
+                            Content="Guardar"
+                            Width="100"
+                            Height="40"
+                            Margin="100,0,10,0"
+                            Click="btnGuardar_Click"/>
+
+                    <Button x:Name="btnCancelar"
+                            Content="Cancelar"
+                            Width="100"
+                            Height="40"
+                            Margin="0,0,10,0"
+                            Click="btnCancelar_Click"/>
+
+                </StackPanel>
             </Grid>
 
-        </StackPanel>
+            <!-- Data Grid -->
+            <DataGrid x:Name="dgEmpleados"
+                      Margin="0,10,0,10"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      Height="150"
+                      CanUserAddRows="False">
 
-        
-        
-        
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Nombre"
+                                        Binding="{Binding Nombre}"
+                                        Width="*"/>
+
+                    <DataGridTextColumn Header="Apellidos"
+                                        Binding="{Binding Apellido}"
+                                        Width="*"/>
+
+                    <DataGridTextColumn Header="Email"
+                                        Binding="{Binding Email}"
+                                        Width="*"/>
+
+                    <DataGridTextColumn Header="Teléfono"
+                                        Binding="{Binding Telefono}"
+                                        Width="*"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
     </ScrollViewer>
 </Window>
