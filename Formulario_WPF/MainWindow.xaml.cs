@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Reporting.WinForms;
 
 namespace Formulario_WPF
 {
@@ -99,6 +100,13 @@ namespace Formulario_WPF
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(txtDNI.Text))
+            {
+                MessageBox.Show("El campo DNI es obligatorio", "Validacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                txtDNI.Focus();
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 MessageBox.Show("El campo Email es obligatorio.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -118,6 +126,7 @@ namespace Formulario_WPF
             {
                 Nombre = txtNombre.Text.Trim(),
                 Apellido = txtApellido.Text.Trim(),
+                DNI = txtDNI.Text.Trim(),
                 Email = txtEmail.Text.Trim(),
                 Telefono = txtTelefono.Text.Trim(),
             });
@@ -137,6 +146,19 @@ namespace Formulario_WPF
             nuevaVentana.dgEmpleados.ItemsSource = listaEmpleados;
             nuevaVentana.Show();
             this.Close();
+        }
+
+        // Boton para generar Informe
+        private void btnGenerarInforme_Click(object sender, RoutedEventArgs e)
+        {
+            reportViewer.LocalReport.ReportPath = "InformeEmpleados.rdlc";
+
+            ReportDataSource rds = new ReportDataSource("DataSet1", listaEmpleados);
+
+            reportViewer.LocalReport.DataSources.Clear();
+            reportViewer.LocalReport.DataSources.Add(rds);
+
+            reportViewer.RefreshReport();
         }
 
         // Limpiar Forumulario
@@ -167,6 +189,7 @@ namespace Formulario_WPF
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
+        public string DNI { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
 
